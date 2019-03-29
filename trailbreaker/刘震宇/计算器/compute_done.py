@@ -13,13 +13,11 @@ C=[Pin('Y5',Pin.IN,Pin.PULL_UP),Pin('Y6',Pin.IN,Pin.PULL_UP),Pin('Y8',Pin.IN,Pin
 formu=["0"]
 fir=0
 sec=0
-
+#将获取的string转化为float
 def transfer(number):
-	#print(number)
 	value1=0
 	value2=0
 	tag=0
-	#print(len(number))
 	for i in range(len(number)):
 		if number[i]==".":#有小数
 			tag=1
@@ -35,7 +33,7 @@ def transfer(number):
 	
 
 remove=0
-disp.clr(disp.PINK)
+disp.clr(disp.WHITE)
 key=1
 mark=0#加减乘除
 place=0#当前字符所在位置
@@ -147,9 +145,7 @@ while True:#扫描键盘
 	if len(formu)>1:
 		if (((formu[0]=="+") or (formu[0]=="-") or (formu[0]=="*") or (formu[0]=="/")) and len(formu)>1):
 			formu=formu[1:]
-
 		if (((formu[-1]=="+") or (formu[-1]=="-") or (formu[-1]=="*") or (formu[-1]=="/") or (formu[-1]=="=")) and len(formu)>=1):
-
 			operator=place
 			if remove==0:
 				formu=formu[1:]
@@ -172,10 +168,8 @@ while True:#扫描键盘
 					mark=3
 					disp.putstr(4,6,"/",0x0000)
 				formu=list(formu[-1])
-
 				key=key+1#找到第一个数
 			else :#不是第一个数
-
 				sec=transfer(formu[:-1])
 				print("sec  is : ",end=" ")
 				print(sec)
@@ -188,16 +182,35 @@ while True:#扫描键盘
 					fir=fir*sec
 				if mark==3:
 					fir=fir/sec
-				if len(formu)>=1:
+				if len(formu)>=1:#继续计算
+					#清空现有的数据显示，添加符号
 					if formu[-1]=="+":
+						disp.putrect(36,54,8*len(str(sec)),8,0xffff)
+						disp.putrect(36,45,8*len(str(fir)),8,0xffff)
+						disp.putrect(24,54,8,8,0xffff)
 						mark=0
+						disp.putstr(4,6,"+",0x0000)
 					if formu[-1]=="-":
+						disp.putrect(36,54,8*len(str(sec)),8,0xffff)
+						disp.putrect(36,45,8*len(str(fir)),8,0xffff)
+						disp.putrect(24,54,8,8,0xffff)
 						mark=1
+						disp.putstr(4,6,"-",0x0000)
 					if formu[-1]=="*":
+						disp.putrect(36,54,8*len(str(sec)),8,0xffff)
+						disp.putrect(36,45,8*len(str(fir)),8,0xffff)
+						disp.putrect(24,54,8,8,0xffff)
 						mark=2
+						disp.putstr(4,6,"*",0x0000)
 					if formu[-1]=="/":
+						disp.putrect(36,54,8*len(str(sec)),8,0xffff)
+						disp.putrect(36,45,8*len(str(fir)),8,0xffff)
+						disp.putrect(24,54,8,8,0xffff)
 						mark=3
+						disp.putstr(4,6,"/",0x0000)
 					formu=formu[-1]
+					#在fir位置显示结果
+					disp.putstr(6,5,str(fir),0x0000)
 	if (len(formu)>=1 and formu[-1]=="="):
 		print(fir)
 		disp.putstr(6,7,str(fir),0x0000)
