@@ -33,30 +33,7 @@ def transfer(number):
 		value2+=float(number[k])*pow(10,len(number)-1-k)
 	return value2
 	
-'''
-def compute():
-	global formu,fir,sec
-	print (formu)
-	for i in range(len(formu)):
-		if ((formu[i]=="+") or (formu[i]=="-") or (formu[i]=="*") or (formu[i]=="/")):
-			fir=formu[0:i]
-			sec=formu[i+1:len(formu)-1]
-			a=transfer(fir)
-			b=transfer(sec)
-			if formu[i]=="+":
-				value=a+b
-				return value
-			if formu[i]=="-":
-				value=a-b
-				return value
-			if formu[i]=="*":
-				value=a*b
-				return value
-			if formu[i]=="/":
-				value=a/b
-				return value
-remove=0
-'''
+
 remove=0
 disp.clr(disp.PINK)
 key=1
@@ -170,13 +147,9 @@ while True:#扫描键盘
 	if len(formu)>1:
 		if (((formu[0]=="+") or (formu[0]=="-") or (formu[0]=="*") or (formu[0]=="/")) and len(formu)>1):
 			formu=formu[1:]
-			#print("formu more than len 1 is " ,end=" ")
-			#print(formu)
+
 		if (((formu[-1]=="+") or (formu[-1]=="-") or (formu[-1]=="*") or (formu[-1]=="/") or (formu[-1]=="=")) and len(formu)>=1):
-			#print("formu out loop  is " ,end=" ")
-			#print(formu)
-			#print("remove  is " ,end=" ")
-			#print(remove)
+
 			operator=place
 			if remove==0:
 				formu=formu[1:]
@@ -199,20 +172,13 @@ while True:#扫描键盘
 					mark=3
 					disp.putstr(4,6,"/",0x0000)
 				formu=list(formu[-1])
-				#print("formu 1 is " ,end=" ")
-				#print(formu)
-				#disp.putstr(6,5,formu,0xf0f0)
+
 				key=key+1#找到第一个数
-				#print("key  is " ,end=" ")
-				#print(key)
-				#key=key+1
 			else :#不是第一个数
-				#print("formu 2 is " ,end=" ")
-				#print(formu)
+
 				sec=transfer(formu[:-1])
 				print("sec  is : ",end=" ")
 				print(sec)
-				
 				disp.putstr(6,6,str(sec),0x0000)
 				if mark==0:
 					fir=fir+sec

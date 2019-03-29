@@ -1,4 +1,4 @@
-
+#运行本程序，会在数码管上显示0-7，第一行数码管显示4 5 6 7，第二行显示0 1 2 3，对照PPT加以理解
 import pyb
 from pyb import Pin
 import time
@@ -62,6 +62,7 @@ Number=[
 
 temp= Number
 result=[0,0,0,0,0,0,0,0]
+#修改每个数字的位置
 for i in range(8):
 	for j in range(8):
 		temp[i][j]=temp[i][j]<<i
@@ -69,15 +70,6 @@ for i in range(8):
 for i in range(8):
 	for j in  range(8):
 		result[i]=result[i]+temp[j][i]
-'''
-def show_4_number(number):
-	temp=Number
-	result=[0,0,0,0,0,0,0,0]
-	number=list(number)
-	for p in range(4):
-			for j in range(8):
-				temp[int(number[p])][j]=temp[i][j]<<p
-'''
 def disp_test():
 	spi = USR_SPI(scl=Pin('X1',Pin.OUT_PP), sda=Pin('X3',Pin.OUT_PP))
 	display = AIP1638(spi,cs=Pin('X2',Pin.OUT_PP))

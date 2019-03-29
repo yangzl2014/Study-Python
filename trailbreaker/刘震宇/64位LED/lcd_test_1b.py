@@ -1,3 +1,4 @@
+#滚动显示I❤NEU
 from machine import Pin
 from micropython import const
 import time

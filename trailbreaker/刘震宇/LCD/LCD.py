@@ -1,5 +1,4 @@
-
-
+#显示东北大学
 
 import lcd_show
 from lcd_show import *
