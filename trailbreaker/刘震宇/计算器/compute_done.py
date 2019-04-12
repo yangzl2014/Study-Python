@@ -212,6 +212,6 @@ while True:#扫描键盘
 					#在fir位置显示结果
 					disp.putstr(6,5,str(fir),0x0000)
 	if (len(formu)>=1 and formu[-1]=="="):
-		print(fir)
+		#print(fir)
 		disp.putstr(6,7,str(fir),0x0000)
 
