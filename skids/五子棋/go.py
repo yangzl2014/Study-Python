@@ -59,7 +59,7 @@ class GO():
 		a=0
 		b=r
 		di=3-(r<<1)
-		while (a<=b):
+		while (a<=b):#选定原点画交叉线
 			screen.drawline(x - b, y-a, x + b, y-a, 3, color)
 			screen.drawline(x - a, y, x - a, y+b, 3, color)
 			screen.drawline(x - b, y-a, x, y-a, 3, color)
@@ -68,7 +68,7 @@ class GO():
 			screen.drawline(x + a, y-b, x + a, y, 3, color)
 			screen.drawline(x + a, y, x + a, y+b, 3, color)
 			screen.drawline(x - b, y+a, x, y+a, 3, color)
-			a+=1
+			a+=1#改变原点位置
 			if(di<0):
 				di+=4*a+6
 			else:
