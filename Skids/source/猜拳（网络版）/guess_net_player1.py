@@ -32,7 +32,7 @@ class Game():
     DEVICE_ID = "wc001"        #设备ID
     TOPIC1 = b"/cloud-skids/online/dev/" + DEVICE_ID
     self.TOPIC2 = b"/cloud-skids/message/server/" + DEVICE_ID
-    CLIENT_ID = "f25410646a8348f8a1726a3890ad8f81"
+    CLIENT_ID = "f25410646a8348f8a1726a3890ad8f83"
     #设备状态
     ON = "1"
     OFF = "0"
