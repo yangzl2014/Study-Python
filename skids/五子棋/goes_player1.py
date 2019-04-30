@@ -108,9 +108,9 @@ class GOES():
 			self.board[j][i][2]=1#将棋子标记为绿色
 		self.is_win(i,j,self.board[j][i][2])#判断胜负
 	def put_circle_back(self,x,y,r,color):#画圆形棋子
-		a=0
-		b=r
-		di=3-(r<<1)
+		a=0#选定原点距离圆心距离
+		b=r#在原点所画交叉线长度
+		di=3-(r<<1)#辅助判断画圆是否结束
 		while (a<=b):#选定原点画交叉线
 			screen.drawline(x - b, y-a, x + b, y-a, 3, color)
 			screen.drawline(x - a, y, x - a, y+b, 3, color)
@@ -121,7 +121,7 @@ class GOES():
 			screen.drawline(x + a, y, x + a, y+b, 3, color)
 			screen.drawline(x - b, y+a, x, y+a, 3, color)
 			a+=1#改变原点位置
-			if(di<0):
+			if(di<0):#辅助判断画圆是否结束，计算下一步所画交叉线长度
 				di+=4*a+6
 			else:
 				di+=10+4*(a-b)
