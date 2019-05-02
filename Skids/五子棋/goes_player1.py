@@ -5,7 +5,7 @@ import text
 import network
 from machine import UART,Pin
 import utime
-from umqtt.simple import MQTTClient
+from umqtt import MQTTClient
 import framebuf
 
 class GOES():
