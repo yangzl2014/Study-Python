@@ -26,7 +26,7 @@ class GOES():
 					[[20,180,0],[40,180,0],[60,180,0],[80,180,0],[100,180,0],[120,180,0],[140,180,0],[160,180,0],[180,180,0],[200,180,0],[220,180,0]],
 					[[20,200,0],[40,200,0],[60,200,0],[80,200,0],[100,200,0],[120,200,0],[140,200,0],[160,200,0],[180,200,0],[200,200,0],[220,200,0]],
 					[[20,220,0],[40,220,0],[60,220,0],[80,220,0],[100,220,0],[120,220,0],[140,220,0],[160,220,0],[180,220,0],[200,220,0],[220,220,0]]
-					]#初始化棋子坐标（x坐标，y坐标，颜色）
+					]#初始化棋子坐标
 		self.startX = 20
 		self.startY = 20
 		self.selectXi = 5
@@ -41,7 +41,7 @@ class GOES():
 		self.DEVICE_ID = "wc001"        #设备ID
 		self.TOPIC1 = b"/cloud-skids/online/dev/" + self.DEVICE_ID
 		self.TOPIC2 = b"/cloud-skids/message/server/" + self.DEVICE_ID
-		self.CLIENT_ID = "f25410646a8348f8a1726a3890ad8f73"
+		self.CLIENT_ID = "f25410646a8348f8a1726a3890ad8f74"
 		self.uart = UART(1, baudrate=115200, bits=8, parity=0, rx=18, tx=19, stop=1)
 		#设备状态
 		self.ON = "1"
@@ -108,10 +108,10 @@ class GOES():
 			self.board[j][i][2]=2#将棋子标记为黑色
 		self.is_win(i,j,self.board[j][i][2])#判断胜负
 	def put_circle_back(self,x,y,r,color):#画圆形棋子
-		a=0#选定原点距离圆心距离
-		b=r#在原点所画交叉线长度
-		di=3-(r<<1)#辅助判断画圆是否结束
-		while (a<=b):#选定原点画交叉线
+		a=0
+		b=r
+		di=3-(r<<1)
+		while (a<=b):
 			screen.drawline(x - b, y-a, x + b, y-a, 3, color)
 			screen.drawline(x - a, y, x - a, y+b, 3, color)
 			screen.drawline(x - b, y-a, x, y-a, 3, color)
@@ -120,8 +120,8 @@ class GOES():
 			screen.drawline(x + a, y-b, x + a, y, 3, color)
 			screen.drawline(x + a, y, x + a, y+b, 3, color)
 			screen.drawline(x - b, y+a, x, y+a, 3, color)
-			a+=1#改变原点位置
-			if(di<0):#辅助判断画圆是否结束，计算下一步所画交叉线长度
+			a+=1
+			if(di<0):
 				di+=4*a+6
 			else:
 				di+=10+4*(a-b)
